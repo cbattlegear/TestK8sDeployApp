@@ -4,6 +4,10 @@ from flask import Flask
 from flask_restful import Resource, Api
 import pyodbc
 
+import os
+import configparser
+import json
+
 # Load the variables from the .env file
 load_dotenv()
 
@@ -17,6 +21,7 @@ database_name = os.getenv('SQL_SERVER_DATABASE')
 user_name = os.getenv('SQL_SERVER_USERNAME')
 password = os.getenv('SQL_SERVER_PASSWORD')
 
+config = configparser.ConfigParser()
 # Create connection to Azure SQL Database using the config.ini file values
 ServerName = config.get('Connection', 'SQL_SERVER_ENDPOINT')
 DatabaseName = config.get('Connection', 'SQL_SERVER_DATABASE')
